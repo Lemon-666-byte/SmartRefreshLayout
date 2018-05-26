@@ -1,7 +1,19 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-version = "0.1"
+//添加
+apply plugin: 'com.novoda.bintray-release'
+//添加
+publish {
+    userOrg = 'yangjh' //你的用户名
+    groupId = 'com.refresh' //你的唯一的groupId，对应com.squareup.okhttp3:okhttp:3.4.1中的com.squareup.okhttp3
+    artifactId = 'RefreshLayout' //你的library的名字，对应com.squareup.okhttp3:okhttp:3.4.1中的okhttp
+    publishVersion = '0.0.1' //版本号
+    desc = 'This is a demo library to teach how to publish you own library to jcenter with android studio.'
+    website = 'https://github.com/yangjianhong/SmartRefreshLayout.git' //建议填写github地址，不过不影响，这里做演示填的自己的网址
+    bintrayUser = 'yangjh' //你的用户名
+    bintrayKey = '734bfd6560782e31fd1eab1b528e86d27f6b3cf0' //在你的账户里面查找
+}
+//gradlew clean build bintrayUpload -PdryRun=false
+
 android {
     compileSdkVersion 27
 
@@ -30,73 +42,13 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
 }
 
-
-def siteUrl = 'https://github.com/yangjianhong/SmartRefreshLayout' // 项目的主页
-def gitUrl = 'https://github.com/yangjianhong/SmartRefreshLayout.git' // Git仓库的url
-group = "com.refreshlibrary" //一般填你唯一的包名
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-// 根节点添加
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'RefreshLayout For Android'
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer { //填写的一些基本信息
-                        id 'yangjh'
-                        name 'yangjh'
-                        email 'yang13366006925@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
+allprojects {
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
         }
-    }
-}
-//配置bintray参数
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintrayUser")
-    key = properties.getProperty("bintrayApiKey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"               //跟上面创建的Maven仓库名字保持一致
-        name = "RefreshLayout"       //发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
     }
 }
 
