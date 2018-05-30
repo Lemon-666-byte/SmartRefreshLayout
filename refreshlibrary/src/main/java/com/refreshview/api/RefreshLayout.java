@@ -319,14 +319,14 @@ public interface RefreshLayout {
 
     /**
      * 设置多功能监听器
-     * @param listener 建议使用 {@link com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener}
+     * @param listener 建议使用
      * @return RefreshLayout
      */
     RefreshLayout setOnMultiPurposeListener(OnMultiPurposeListener listener);
 
     /**
      * 设置滚动边界判断器
-     * @param boundary 建议使用 {@link com.scwang.smartrefresh.layout.impl.ScrollBoundaryDeciderAdapter}
+     * @param boundary 建议使用
      * @return RefreshLayout
      */
     RefreshLayout setScrollBoundaryDecider(ScrollBoundaryDecider boundary);
