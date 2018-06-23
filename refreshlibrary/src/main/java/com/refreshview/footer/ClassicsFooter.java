@@ -125,7 +125,7 @@ public class ClassicsFooter extends InternalClassics<ClassicsFooter> implements 
         if (ta.hasValue(R.styleable.ClassicsFooter_srlTextSizeTitle)) {
             mTitleText.setTextSize(TypedValue.COMPLEX_UNIT_PX, ta.getDimensionPixelSize(R.styleable.ClassicsFooter_srlTextSizeTitle, DensityUtil.dp2px(16)));
         } else {
-            mTitleText.setTextSize(16);
+            mTitleText.setTextSize(14);
         }
 
         if (ta.hasValue(R.styleable.ClassicsFooter_srlPrimaryColor)) {
