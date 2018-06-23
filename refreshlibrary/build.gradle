@@ -4,9 +4,9 @@ apply plugin: 'com.novoda.bintray-release'
 //添加
 publish {
     userOrg = 'yangjh' //你的用户名
-    groupId = 'com.refresh' //你的唯一的groupId，对应com.squareup.okhttp3:okhttp:3.4.1中的com.squareup.okhttp3
+    groupId = 'com.widget.refresh' //你的唯一的groupId，对应com.squareup.okhttp3:okhttp:3.4.1中的com.squareup.okhttp3
     artifactId = 'SmartRefreshLayout' //你的library的名字，对应com.squareup.okhttp3:okhttp:3.4.1中的okhttp
-    publishVersion = '0.0.1' //版本号
+    publishVersion = '1.0.0' //版本号
     desc = 'This is a demo library to teach how to publish you own library to jcenter with android studio.'
     website = 'https://github.com/yangjianhong/SmartRefreshLayout.git' //建议填写github地址，不过不影响，这里做演示填的自己的网址
 //    bintrayUser = 'yangjh' //你的用户名
